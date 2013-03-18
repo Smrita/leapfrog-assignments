@@ -9,76 +9,100 @@ import taxcalculation.*;
 import java.util.Scanner;
 
 /**
+ * <PRE>
  * Takes as input the below details
- * Monthly income
- * Monthly allowance
- * CIT %(Citizen Investment Trust)
- * Insurance premium
- * PF %(provident fund) {of the base salary}
- * Married/single
- * Male/female
- * Name (optional)
- * 
- * and aks user for input and assigns the value to the variables
- * @author smrita
+ * <UL>
+ *   <LI>Monthly income</LI>
+ *   <LI>Monthly allowance</LI>
+ *   <LI>CIT %(Citizen Investment Trust)</LI>
+ *   <LI>Insurance premium</LI>
+ *   <LI>PF %(provident fund) {of the base salary}</LI>
+ *   <LI>Married/single</LI>
+ *   <LI>Male/female</LI>
+ *   <LI>Name</LI>
+ * </UL>   
+  
+ * Also asks the user for input and assigns the value to the variables
+ </PRE>
+ * @author Smrita
  *
  */
 public class BasicInfo
 {
     /**
-     * variable to store monthlyIncome
+     * Stores the monthly income
      */
     double monthlyIncome;
     /**
-     * variable to store monthlyAllowance
+     * Stores the monthly allowance
      */
     double monthlyAllowance;
     /**
-     * variable to store yearlyInsurance
+     * Stores the yearly insurance paid
      */
     double yearlyInsurance;
     /**
-     * variable to store marital status
+     * Stores the  marital status
      */    
     String maritalStatus;
     /**
-     * variable to store gender
+     * Stores the gender
      */
     String gender;
     /**
-     * variable to store firstname
+     * Store the firstname
      */
     String firstName;
     /**
-     * variable to store middleName
+     * Stores the middleName
      */
     String middleName;
     /**
-     * variable to store lastname
+     * Stores the lastname
      */
     String lastName;
-    /*
-     * variable to store pfPercentage
+    /**
+     * Stores the applicable PROVIENT FUND in percentage
      */
     float pfPercentage;
     /**
-     * variable to store citPrcentage
+     * Stores the applicable CIT in percentage
      */
     float citPercentage;
     
    
-    
-     final float bracket_1=(float) 0.01;
-     final float bracket_2=(float) 0.15;
-     final float bracket_3=(float) 0.25;
-     final int bracket_1_unMar=160000;    
-     final int bracket_1_mar=200000;
-     final int bracket_2_unMar=260000;
-     final int bracket_2_mar=300000;
+    /**
+     * The value of this constant is {@value}.
+     */
+     final float BRACKET_1=(float) 0.01;
+     /**
+      * The value of this constant is {@value}.
+      */
+     final float BRACKET_2=(float) 0.15;
+     /**
+      * The value of this constant is {@value}.
+      */
+     final float BRACKET_3=(float) 0.25;
+     /**
+      * The value of this constant is {@value}.
+      */
+     final int BRACKET_1_UNMAR=160000; 
+     /**
+      * The value of this constant is {@value}.
+      */
+     final int BRACKET_1_MAR=200000;
+     /**
+      * The value of this constant is {@value}.
+      */
+     final int BRACKET_2_UNMAR=260000;
+     /**
+      * The value of this constant is {@value}.
+      */
+     final int BRACKET_2_MAR=300000;
     
     /**
      * Takes input from user and assigns it to the fields of the class
-     * {@link taxcalculation.BasicInfo} 
+     * {@link BasicInfo} 
      */
     public void getUserInput()
     {
@@ -96,19 +120,23 @@ public class BasicInfo
       System.out.println("Enter the yearly amount that goes to the insurance company ");
       yearlyInsurance=input.nextDouble();
       
+      do
+      {
+      System.out.println("Enter pf in % (should be less than 10)");
+      pfPercentage=input.nextFloat();
+      }while(pfPercentage>10);
+      
       System.out.println("Enter the cit in % eg:if its 8% enter 8 not 0.08");
       citPercentage=input.nextFloat();
+     
       
-      System.out.println("Enter pf in % eg:if its 8% enter 8 not 0.08");
-      pfPercentage=input.nextFloat();
-      
-      if(pfPercentage>10)
-      {
-          System.out.println("pf should be less than 10%\n ");
-          System.out.println("Enter pf again in % eg:if its 8% enter 8 not 0.08");
-          pfPercentage=input.nextFloat();
-           
-      }
+//      if(pfPercentage>10)
+//      {
+//          System.out.println("pf should be less than 10%\n ");
+//          System.out.println("Enter pf again in % eg:if its 8% enter 8 not 0.08");
+//          pfPercentage=input.nextFloat();
+//           
+//      }
       if((citPercentage+pfPercentage*2)>33)
       {
     	  System.out.println("CIT+PF should be less than 33%\n ");
@@ -132,7 +160,7 @@ public class BasicInfo
       maritalStatus=input.next();
      
       System.out.println("Enter your gender");
-     gender=input.next();
+      gender=input.next();
       
      
       
@@ -180,33 +208,7 @@ public class BasicInfo
 		return citPercentage;
 	}
 
-	public float getBracket_1() {
-		return bracket_1;
-	}
-
-	public float getBracket_2() {
-		return bracket_2;
-	}
-
-	public float getBracket_3() {
-		return bracket_3;
-	}
-
-	public int getBracket_1_unMar() {
-		return bracket_1_unMar;
-	}
-
-	public int getBracket_1_mar() {
-		return bracket_1_mar;
-	}
-
-	public int getBracket_2_unMar() {
-		return bracket_2_unMar;
-	}
-
-	public int getBracket_2_mar() {
-		return bracket_2_mar;
-	}
+	
     
 //    public static void main(String[] args)
 //    {

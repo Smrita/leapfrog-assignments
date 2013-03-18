@@ -7,17 +7,25 @@ package taxcalculation;
 import javax.swing.JOptionPane;
 
 /**
- * Displays output to standard output stream.
+ * Sends information to the standard output stream.
  * @author smrita
  */
 public class DisplayInformation 
 
 {
+	/**
+	 * output flow
+	 * Calcu Provident Fund
+	 * Then calculates CIT
+	 * Then tax is calculated
+	 * Then cash in hand is calculated
+	 * @param args
+	 */
 	  
     public static void main(String[] args)
     {
-    	 DisplayInformation di=new DisplayInformation();
-     TaxCalculator taxCalc=new TaxCalculator();
+    	DisplayInformation di=new DisplayInformation();
+        TaxCalculator taxCalc=new TaxCalculator();
         taxCalc.getInput();
         taxCalc.calculatePf();
         taxCalc.calculateCit();

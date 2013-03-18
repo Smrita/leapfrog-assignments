@@ -7,11 +7,12 @@ package taxcalculation;
 import javax.swing.JOptionPane;
 
 /**
- *calculates <pre>
- *               Monthly tax
- *               Monthly PF amount
- *			     Monthly CIT amount
- *				 Monthly cash in hand 
+ *Calculates 
+ *<pre>
+ * Monthly tax
+ * Monthly PF amount
+ * Monthly CIT amount
+ * Monthly cash in hand 
  *<pre>
  * @author smrita
  */
@@ -20,33 +21,40 @@ import javax.swing.JOptionPane;
 public class TaxCalculator
 {
     BasicInfo info=new BasicInfo();
+    /**
+     * The value of this constant is {@value}
+     */
+    final int YEAR=12;
     
    /**
-    * variable to store monthlyCit
+    * Stores monthly CIT
     */
     double monthlyCit;
     /**
-     * variable to store totalMonthlyPf
+     * Stores the excess monthly CIT
      */
     double excessMonthlyCit=0;
+    /**
+     * Stored the total monthly Provident fund
+     */
     double totalMonthlyPf;
     /**
-     * variable to store yearlyTaxable amount
+     * Stores the yearly taxable amount
      */
     double yearlyTaxableAmt;
     /**
-     * variable to store monthly cash in hand
+     * Stores the monthly cash in hand
      */
     double monthlyCashInHand;
-    final int YEAR=12;
+    
     /**
-     * variable to store monthlyTax
+     * Stores the  monthly tax
      */
     double monthlyTax;
   
 
     /**
-     * This method gets input from the user 
+     * Retrieves input from the user 
      * @param void
      
      */
@@ -55,7 +63,7 @@ public class TaxCalculator
            info.getUserInput();
      }
      /**
-      * this method calculates Provident fund
+      * Calculates the Provident fund
       * @param void
       */
      public void calculatePf()
@@ -65,7 +73,7 @@ public class TaxCalculator
      }
      
     /**
-     * this method calculates CIT
+     * Calculates the CIT
      * @param void
      * @return void     
      */
@@ -82,7 +90,7 @@ public class TaxCalculator
            
      }
  /**
-  * this method calculates monthlyTAX     
+  * Calculates the monthly tax     
   */
    public void calculateTax()
    {
@@ -90,33 +98,33 @@ public class TaxCalculator
        
        yearlyTaxableAmt=info.monthlyIncome*12+info.monthlyAllowance*12-info.yearlyInsurance-totalMonthlyPf/2*12-monthlyCit*12+excessMonthlyCit; 
        
-       if(info.maritalStatus.toLowerCase().matches("unmarried")&&yearlyTaxableAmt<=info.bracket_1_unMar)
+       if(info.maritalStatus.toLowerCase().matches("unmarried")&&yearlyTaxableAmt<=info.BRACKET_2_UNMAR)
        {
-           double yearlyTax=yearlyTaxableAmt*info.bracket_1;
+           double yearlyTax=yearlyTaxableAmt*info.BRACKET_1;
            monthlyTax=yearlyTax/12;
        }
        
-      else if(info.maritalStatus.toLowerCase().matches("married")&&yearlyTaxableAmt<info.bracket_1_mar)
+      else if(info.maritalStatus.toLowerCase().matches("married")&&yearlyTaxableAmt<info.BRACKET_1_MAR)
        {
-           double yearlyTax=yearlyTaxableAmt*info.bracket_1;
+           double yearlyTax=yearlyTaxableAmt*info.BRACKET_1;
            monthlyTax=yearlyTax/12;
        }
        
-      else if(info.maritalStatus.toLowerCase().matches("unmarried")&&yearlyTaxableAmt<=info.bracket_2_unMar)
+      else if(info.maritalStatus.toLowerCase().matches("unmarried")&&yearlyTaxableAmt<=info.BRACKET_2_UNMAR)
        {
-           double yearlyTax=yearlyTaxableAmt*info.bracket_2;
+           double yearlyTax=yearlyTaxableAmt*info.BRACKET_2;
            monthlyTax=yearlyTax/12;
        }
        
-      else if(info.maritalStatus.toLowerCase().matches("married")&&yearlyTaxableAmt<=info.bracket_2_mar)
+      else if(info.maritalStatus.toLowerCase().matches("married")&&yearlyTaxableAmt<=info.BRACKET_2_MAR)
        {
-           double yearlyTax=yearlyTaxableAmt*info.bracket_2;
+           double yearlyTax=yearlyTaxableAmt*info.BRACKET_2;
            monthlyTax=yearlyTax/12;
        }
        
        else
       {
-           double yearlyTax=yearlyTaxableAmt*info.bracket_3;
+           double yearlyTax=yearlyTaxableAmt*info.BRACKET_3;
            monthlyTax=yearlyTax/12;      
       }
        
@@ -126,7 +134,7 @@ public class TaxCalculator
       
    }
    /**
-    * Calculates Monthly CashInHand
+    * Calculates Monthly Cash in hand
     */
    public void calculateCashInHand()
    {
@@ -134,19 +142,19 @@ public class TaxCalculator
    }
    /**
     * Displays <pre>
-    *          -Monthlytax
-    *          -TotalMonthlyPf
-    *          -TotalMonthlyCIT
-    *          -MonthlyCashInHand
+    *         <ul>
+    *          <li>Monthlytax</li>
+    *          <li>TotalMonthlyPf</li>
+    *          <li>TotalMonthlyCIT</li>
+    *          <li>MonthlyCashInHand</li>
+    *          <ul>
     *          </pre>
     * to standard Output Stream
     *  @param void
     *  @return void        
     */
    
-  /**
- * 
- */
+ 
 public void displayInfo()
    {
 	   String innfo="FirstName"+"     "+info.firstName+"\nLastname\t"+"     "+info.lastName+"\nGender\t"+"     "+"\t"+info.gender+"\nMarital status"+"     "+info.maritalStatus+"\n";
