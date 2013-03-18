@@ -1,4 +1,3 @@
-
 package taxcalculation;
 
 
@@ -13,7 +12,7 @@ import java.util.Scanner;
  * Insurance premium
  * PF %(provident fund) {of the base salary}
  * Married/single
- * Male/female
+ * Male/femalee
  * Name (optional)
  * 
  * and aks user for input and assigns the value to the variables
