@@ -15,7 +15,7 @@ public class DisplayInformation
 {
 	/**
 	 * output flow
-	 * Calcu Provident Fund
+	 * Calculates Provident Fund
 	 * Then calculates CIT
 	 * Then tax is calculated
 	 * Then cash in hand is calculated
